@@ -21,5 +21,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        final ImageView korosubutton = findViewById(R.id.korosu_button);
+        korosubutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent();
+                intent.setClass(MainActivity.this,KorosuActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
