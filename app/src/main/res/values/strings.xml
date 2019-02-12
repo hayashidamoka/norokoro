@@ -1,4 +1,13 @@
 <resources>
     <string name="app_name">norokoro</string>
     <string name="icon">icon</string>
+    <string-array name="list">
+        <item>あたま</item>
+        <item>おなか</item>
+        <item>むね</item>
+        <item>みぎて</item>
+        <item>ひだりて</item>
+        <item>みぎあし</item>
+        <item>ひだりあし</item>
+    </string-array>
 </resources>
