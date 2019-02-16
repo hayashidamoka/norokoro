@@ -1,23 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
-        tools:text="test"
-        android:id="@+id/erabu_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#fff9B1"
-        android:shape="ring"
-        android:text="ころす"
-        android:textColor="#701865"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <ImageView
+        android:id="@+id/korokoro_haikei"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/korokoro_haikei"
+        android:scaleType="centerCrop" />
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="-250dp"
+        android:src="@drawable/biki_yaru"
+        android:layout_alignParentTop="true" />
 
-</android.support.constraint.ConstraintLayout>
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="350dp"
+        android:layout_centerInParent="true"
+
+        android:src="@drawable/apude" />
+
+</RelativeLayout>

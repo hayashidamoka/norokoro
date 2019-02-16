@@ -4,6 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ImageView
+        android:id="@+id/noronoro_haikei"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/noronoro_haikei"
+        android:scaleType="centerCrop" />
+
     <Spinner
         android:id="@+id/spinner"
         android:layout_width="wrap_content"
@@ -27,6 +36,13 @@
         android:background="#fff9B1"
         android:textColor="#701865"
         android:shape="ring"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="-250dp"
+        android:src="@drawable/doko_sasu"
+        android:layout_alignParentTop="true" />
 
 
 </RelativeLayout>
