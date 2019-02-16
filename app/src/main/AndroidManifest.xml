@@ -28,6 +28,10 @@
 
         <activity android:name=".KorosuActivity"
             android:screenOrientation="portrait"/>
+
+        <activity android:name="SentakuActivity"
+            android:screenOrientation="portrait"/>
+
     </application>
 
 </manifest>
