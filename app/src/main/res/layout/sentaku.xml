@@ -22,12 +22,68 @@
 
     <ImageView
         android:id="@+id/kariokikun"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
-        android:src="@drawable/kariokikun"
+        android:src="@drawable/dislike1"
         android:layout_above="@+id/name"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:paddingBottom="5dp"
+        android:layout_above="@+id/line">
+
+    <ImageView
+        android:id="@+id/dislike1"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/dislike1"/>
+
+    <ImageView
+        android:id="@+id/dislike2"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/dislike2"/>
+
+    <ImageView
+        android:id="@+id/dislike4"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/dislike4"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_above="@+id/name">
+
+    <ImageView
+        android:id="@+id/dislike3"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/dislike3" />
+
+    <ImageView
+        android:id="@+id/dislike5"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/dislike5" />
+
+    <ImageView
+        android:id="@+id/dislike6"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/dislike6" />
+
+    </LinearLayout>
 
     <EditText
         android:id="@+id/name"
@@ -37,5 +93,13 @@
         android:textSize="25dp"
         android:hint="なまえをいれてね❤"
         android:layout_above="@id/start"/>
+
+    <ImageView
+        android:id="@+id/install"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="-350dp"
+        android:src="@drawable/install"
+        android:layout_alignParentTop="true" />
 
 </RelativeLayout>
