@@ -13,5 +13,10 @@ public class SentakuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sentaku);
 
-    }
+//        public void d1(view v){
+//            ((ImageView))
+//                    findViewById
+        }
+
+
 }

@@ -20,13 +20,25 @@
         android:layout_centerInParent="true"
         android:src="@drawable/start" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="↓アイツのかお↓"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:layout_above="@+id/dislike"/>
+
     <ImageView
-        android:id="@+id/kariokikun"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:id="@+id/dislike"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
+        android:layout_centerInParent="true"
         android:src="@drawable/dislike1"
+        android:padding="10dp"
+        android:layout_marginBottom="20dp"
+        android:background="#fff"
         android:layout_above="@+id/name"/>
 
     <LinearLayout
@@ -34,25 +46,32 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:paddingBottom="5dp"
+        android:background="#ba55d3"
+        android:padding="3dp"
         android:layout_above="@+id/line">
 
     <ImageView
         android:id="@+id/dislike1"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_margin="3dp"
+        android:onClick="d1"
         android:src="@drawable/dislike1"/>
 
     <ImageView
         android:id="@+id/dislike2"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_margin="3dp"
+        android:onClick="d2"
         android:src="@drawable/dislike2"/>
 
     <ImageView
         android:id="@+id/dislike4"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_margin="3dp"
+        android:onClick="d4"
         android:src="@drawable/dislike4"/>
 
     </LinearLayout>
@@ -63,24 +82,32 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
+        android:background="#ba55d3"
+        android:padding="3dp"
         android:layout_above="@+id/name">
 
     <ImageView
         android:id="@+id/dislike3"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_margin="3dp"
+        android:onClick="d3"
         android:src="@drawable/dislike3" />
 
     <ImageView
         android:id="@+id/dislike5"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_margin="3dp"
+        android:onClick="d5"
         android:src="@drawable/dislike5" />
 
     <ImageView
         android:id="@+id/dislike6"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_margin="3dp"
+        android:onClick="d6"
         android:src="@drawable/dislike6" />
 
     </LinearLayout>
@@ -90,7 +117,7 @@
         android:layout_width="250dp"
         android:layout_height="50dp"
         android:layout_centerInParent="true"
-        android:textSize="25dp"
+        android:textSize="25sp"
         android:hint="なまえをいれてね❤"
         android:layout_above="@id/start"/>
 
