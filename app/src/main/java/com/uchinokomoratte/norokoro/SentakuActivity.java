@@ -48,20 +48,10 @@ public class SentakuActivity extends AppCompatActivity {
         start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            if(name.langth() == 0){
-                (text.setError("なまえいれてよぅ"));
-            }else{
-                Intent intent =new Intent();
-                intent.setClass(SentakuActivity.this,MainActivity.class);
-                startActivity(intent);
-            }
+
         })
     }
 }
 }
-//        public void start(View v){
-//            EditText text =(EditText)findViewById(R.id.name);
-//            if(EditText.getText().toString().equals("")){
-//                text.setError("なまえいれてよぅ");
-//            }
-//       }
+
+
