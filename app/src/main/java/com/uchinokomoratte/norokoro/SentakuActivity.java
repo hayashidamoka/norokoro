@@ -1,12 +1,14 @@
 package com.uchinokomoratte.norokoro;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 
 public class SentakuActivity extends AppCompatActivity {
@@ -40,16 +42,21 @@ public class SentakuActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sentaku);
-        final EditText name = findViewById(R.id.name);
+        final EditText nameEditText = findViewById(R.id.nameEditText);
         final ImageView start = findViewById(R.id.start);
+        final TextView ErrorText = findViewById(R.id.ErrorText);
         start.setOnClickListener(new View.OnClickListener() {
 
             @Override
-
             public void onClick(View v) {
-                String text = name.getText().toString();
-                name.setText(text);
-
+                String name = nameEditText.getText().toString();
+                if(name.length() == 0){
+                    ErrorText.setText("↓なまえいれてよぅ(´･ω･`)ﾈｪﾈｪ" );
+                }else {
+                    Intent intent = new Intent();
+                    intent.setClass(SentakuActivity.this,MainActivity.class);
+                    startActivity(intent);
+                }
             }
         });
 }
