@@ -36,7 +36,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_centerInParent="true"
-        android:src="@drawable/dislike1"
+        android:src="@drawable/dislike_boy"
         android:padding="10dp"
         android:layout_marginBottom="20dp"
         android:background="#fff"
@@ -52,28 +52,25 @@
         android:layout_above="@+id/line">
 
     <ImageView
-        android:id="@+id/dislike1"
+        android:id="@+id/dislike_boy"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_margin="3dp"
-        android:onClick="d1"
-        android:src="@drawable/dislike1"/>
+        android:src="@drawable/dislike_boy"/>
 
     <ImageView
-        android:id="@+id/dislike2"
+        android:id="@+id/dislike_girl"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_margin="3dp"
-        android:onClick="d2"
-        android:src="@drawable/dislike2"/>
+        android:src="@drawable/dislike_girl"/>
 
     <ImageView
-        android:id="@+id/dislike4"
+        android:id="@+id/dislike_bare"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_margin="3dp"
-        android:onClick="d4"
-        android:src="@drawable/dislike4"/>
+        android:src="@drawable/dislike_bare"/>
 
     </LinearLayout>
 
@@ -88,28 +85,25 @@
         android:layout_above="@+id/nameEditText">
 
     <ImageView
-        android:id="@+id/dislike3"
+        android:id="@+id/dislike_mister"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_margin="3dp"
-        android:onClick="d3"
-        android:src="@drawable/dislike3" />
+        android:src="@drawable/dislike_mister" />
 
     <ImageView
-        android:id="@+id/dislike5"
+        android:id="@+id/dislike_lady"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_margin="3dp"
-        android:onClick="d5"
-        android:src="@drawable/dislike5" />
+        android:src="@drawable/dislike_lady" />
 
     <ImageView
-        android:id="@+id/dislike6"
+        android:id="@+id/dislike_devil"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_margin="3dp"
-        android:onClick="d6"
-        android:src="@drawable/dislike6" />
+        android:src="@drawable/dislike_devil" />
 
     </LinearLayout>
 
