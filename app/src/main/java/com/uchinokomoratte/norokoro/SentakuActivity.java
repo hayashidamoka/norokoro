@@ -93,6 +93,7 @@ public class SentakuActivity extends AppCompatActivity {
                     Intent intent = new Intent();
                     intent.setClass(SentakuActivity.this,MainActivity.class);
                     startActivity(intent);
+                    finish();
                 }
 
             }

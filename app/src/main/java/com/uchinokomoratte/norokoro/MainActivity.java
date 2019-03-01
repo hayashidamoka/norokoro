@@ -40,11 +40,11 @@ public class MainActivity extends AppCompatActivity {
         int gazouNoID = prefs.getInt("GAZOU_NO_ID",1);
         String dislike_name = prefs.getString("DISLIKE_NAME","もか");
 
-         ImageView dislike = findViewById(R.id.dislike);
-         dislike = gazouNoID;
+         ImageView dislikeImageView = findViewById(R.id.dislikeImageView);
+         dislikeImageView.setImageResource(gazouNoID);
 
-        TextView name = findViewById(R.id.name);
-        name = dislike_name;
+        TextView nameTextView = findViewById(R.id.nameTextView);
+        nameTextView.setText(dislike_name);
 
     }
 }
