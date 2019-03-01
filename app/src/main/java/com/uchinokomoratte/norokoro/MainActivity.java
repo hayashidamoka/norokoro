@@ -1,9 +1,9 @@
 package com.uchinokomoratte.norokoro;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        SharedPreferences prefs =getSharedPreferences("DataSave", Context.MODE_PRIVATE);
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
 
 
         int gazouNoID = prefs.getInt("GAZOU_NO_ID",1);

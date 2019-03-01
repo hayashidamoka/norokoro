@@ -1,10 +1,10 @@
 package com.uchinokomoratte.norokoro;
 
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -87,7 +87,7 @@ public class SentakuActivity extends AppCompatActivity {
                     ErrorText.setText("↓なまえいれてよぅ(´･ω･`)ﾈｪﾈｪ" );
                 }else {
                     // 画像IDを保存
-                    SharedPreferences prefs = getPreferences(Context.MODE_PRIVATE);
+                    SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(SentakuActivity.this);
                     prefs.edit().putInt("GAZOU_NO_ID",gazouNoID).apply();
                     prefs.edit().putString("DISLIKE_NAME",name).apply();
                     Intent intent = new Intent();
