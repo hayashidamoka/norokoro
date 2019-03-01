@@ -1,11 +1,14 @@
 package com.uchinokomoratte.norokoro;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -30,5 +33,18 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        SharedPreferences prefs =getSharedPreferences("DataSave", Context.MODE_PRIVATE);
+
+
+        int gazouNoID = prefs.getInt("GAZOU_NO_ID",1);
+        String dislike_name = prefs.getString("DISLIKE_NAME","もか");
+
+         ImageView dislike = findViewById(R.id.dislike);
+         dislike = gazouNoID;
+
+        TextView name = findViewById(R.id.name);
+        name = dislike_name;
+
     }
 }
