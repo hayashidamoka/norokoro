@@ -37,8 +37,8 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
 
 
-        int gazouNoID = prefs.getInt("GAZOU_NO_ID",1);
-        String dislike_name = prefs.getString("DISLIKE_NAME","もか");
+        int gazouNoID = prefs.getInt("GAZOU_NO_ID",R.drawable.dislike_boy);
+        String dislike_name = prefs.getString("DISLIKE_NAME","かいと");
 
          ImageView dislikeImageView = findViewById(R.id.dislikeImageView);
          dislikeImageView.setImageResource(gazouNoID);
