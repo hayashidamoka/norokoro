@@ -16,12 +16,29 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="hi" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="100dp"
+        android:text="1" />
 
    <ImageView
-       android:layout_width="100dp"
-       android:layout_height="100dp"
-       android:id="@+id/maru"
-       android:src="@drawable/maru"/>
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="-150dp"
+       android:layout_alignParentTop="true"
+       android:id="@+id/norokaisuu"
+       android:src="@drawable/norokaisuu"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/waraningyou" />
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="50dp"
+
+        android:src="@drawable/dislike_boy"/>
+
+
 </RelativeLayout>

@@ -23,7 +23,7 @@
         <activity android:name=".NorouActivity"
             android:screenOrientation="portrait"/>
 
-        <activity android:name=".Norou2Activity"
+        <activity android:name=".WaraningyouActivity"
             android:screenOrientation="portrait"/>
 
         <activity android:name=".KorosuActivity"

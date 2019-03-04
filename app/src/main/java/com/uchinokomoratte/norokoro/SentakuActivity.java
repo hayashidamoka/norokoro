@@ -13,7 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class SentakuActivity extends AppCompatActivity {
-    private int gazouNoID;
+    private int gazouNoID = R.drawable.dislike_boy;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

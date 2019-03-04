@@ -18,7 +18,7 @@ public class NorouActivity extends AppCompatActivity {
         noroubutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(NorouActivity.this, Norou2Activity.class);
+                Intent intent = new Intent(NorouActivity.this, WaraningyouActivity.class);
                 startActivity(intent);
             }
         });
