@@ -17,21 +17,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="100dp"
+        android:layout_marginTop="100dp"
         android:text="1" />
 
    <ImageView
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
-       android:layout_alignParentTop="true"
+       android:layout_alignParentBottom="true"
+       android:layout_marginBottom="40dp"
        android:id="@+id/norokaisuu"
        android:src="@drawable/norokaisuu"/>
 
     <ImageView
+        android:id="@+id/waraningyouImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_below="@+id/norokaisuu"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="100dp"
         android:src="@drawable/waraningyou" />
 
     <ImageView
@@ -39,7 +42,8 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="50dp"
-        android:layout_centerInParent="true"
+        android:layout_alignTop="@+id/waraningyouImageView"
+        android:layout_centerHorizontal="true"
         android:padding="7dp"
         android:background="#fff"
         android:src="@drawable/dislike_boy"/>
@@ -48,7 +52,9 @@
         android:id="@+id/kugi"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
+        android:layout_alignTop="@+id/waraningyouImageView"
+        android:layout_marginTop="160dp"
         android:src="@drawable/kugi"/>
 
 
