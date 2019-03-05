@@ -12,13 +12,13 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class SentakuActivity extends AppCompatActivity {
+public class TourokuActivity extends AppCompatActivity {
     private int gazouNoID = R.drawable.dislike_boy;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sentaku);
+        setContentView(R.layout.activity_touroku);
         final EditText nameEditText = findViewById(R.id.nameEditText);
         final ImageView start = findViewById(R.id.start);
         final TextView ErrorText = findViewById(R.id.ErrorText);
@@ -87,11 +87,11 @@ public class SentakuActivity extends AppCompatActivity {
                     ErrorText.setText("↓なまえいれてよぅ(´･ω･`)ﾈｪﾈｪ" );
                 }else {
                     // 画像IDを保存
-                    SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(SentakuActivity.this);
+                    SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(TourokuActivity.this);
                     prefs.edit().putInt("GAZOU_NO_ID",gazouNoID).apply();
                     prefs.edit().putString("DISLIKE_NAME",name).apply();
                     Intent intent = new Intent();
-                    intent.setClass(SentakuActivity.this,MainActivity.class);
+                    intent.setClass(TourokuActivity.this,MainActivity.class);
                     startActivity(intent);
                     finish();
                 }

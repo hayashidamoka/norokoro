@@ -16,7 +16,7 @@ public class SplashActivity extends AppCompatActivity {
         new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent=new Intent(SplashActivity.this, SentakuActivity.class);
+                Intent intent=new Intent(SplashActivity.this, TourokuActivity.class);
                 startActivity(intent);
             }
         }, 3000);

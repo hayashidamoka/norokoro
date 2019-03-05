@@ -31,14 +31,35 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
         android:src="@drawable/waraningyou" />
 
     <ImageView
+        android:id="@+id/dislikeImageView"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="50dp"
-
+        android:layout_centerInParent="true"
+        android:padding="7dp"
+        android:background="#fff"
         android:src="@drawable/dislike_boy"/>
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerInParent="true"
+        android:src="@drawable/kugi_mae"/>
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerInParent="true"
+        android:src="@drawable/kugi_ato"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
 
 
 </RelativeLayout>

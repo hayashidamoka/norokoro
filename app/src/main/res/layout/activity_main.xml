@@ -45,6 +45,8 @@
 
     <ImageView
         android:id="@+id/dislikeImageView"
+        android:padding="5dp"
+        android:background="#fff"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_centerInParent="true"

@@ -14,18 +14,17 @@
         android:background="@drawable/korokoro_haikei"
         android:scaleType="centerCrop" />
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="-250dp"
-        android:src="@drawable/biki_yaru"
-        android:layout_alignParentTop="true" />
+    <!--<ImageView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_marginTop="-250dp"-->
+        <!--android:src="@drawable/biki_yaru"-->
+        <!--android:layout_alignParentTop="true" />-->
 
     <ImageView
         android:layout_width="300dp"
-        android:layout_height="350dp"
+        android:layout_height="400dp"
         android:layout_centerInParent="true"
-
         android:src="@drawable/apude" />
 
 </RelativeLayout>

@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         noroubutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent =new Intent(MainActivity.this,NorouActivity.class);
+                Intent intent =new Intent(MainActivity.this,WaraningyouActivity.class);
                 startActivity(intent);
             }
         });
