@@ -21,9 +21,8 @@
         android:text="1" />
 
    <ImageView
-       android:layout_width="wrap_content"
+       android:layout_width="match_parent"
        android:layout_height="wrap_content"
-       android:layout_marginTop="-150dp"
        android:layout_alignParentTop="true"
        android:id="@+id/norokaisuu"
        android:src="@drawable/norokaisuu"/>
@@ -32,6 +31,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
+        android:layout_below="@+id/norokaisuu"
         android:src="@drawable/waraningyou" />
 
     <ImageView
@@ -45,20 +45,12 @@
         android:src="@drawable/dislike_boy"/>
 
     <ImageView
+        android:id="@+id/kugi"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_centerInParent="true"
-        android:src="@drawable/kugi_mae"/>
+        android:src="@drawable/kugi"/>
 
-    <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_centerInParent="true"
-        android:src="@drawable/kugi_ato"/>
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
 
 
 
