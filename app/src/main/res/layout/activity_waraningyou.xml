@@ -12,14 +12,6 @@
         android:background="@drawable/noronoro_haikei"
         android:scaleType="centerCrop" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
-        android:text="1" />
-
    <ImageView
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
@@ -27,6 +19,17 @@
        android:layout_marginBottom="40dp"
        android:id="@+id/norokaisuu"
        android:src="@drawable/norokaisuu"/>
+
+    <TextView
+        android:id="@+id/countTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:layout_alignTop="@+id/norokaisuu"
+        android:textColor="#fff"
+        android:textSize="80sp"
+        android:text="1" />
 
     <ImageView
         android:id="@+id/waraningyouImageView"

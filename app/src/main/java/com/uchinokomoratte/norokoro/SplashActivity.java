@@ -16,9 +16,13 @@ public class SplashActivity extends AppCompatActivity {
         new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent=new Intent(SplashActivity.this, TourokuActivity.class);
-                startActivity(intent);
+                if (!isFinishing()) {
+                    // isFinishingでチェックしないとバックキーを押したとき登録画面にいってしまう
+                    Intent intent = new Intent(SplashActivity.this, TourokuActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
             }
-        }, 3000);
+        }, 2000);
     }
 }
