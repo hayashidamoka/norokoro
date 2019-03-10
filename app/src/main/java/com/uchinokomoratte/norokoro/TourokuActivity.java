@@ -21,7 +21,7 @@ public class TourokuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_touroku);
         final EditText nameEditText = findViewById(R.id.nameEditText);
         final ImageView start = findViewById(R.id.start);
-        final TextView ErrorText = findViewById(R.id.ErrorText);
+        final TextView ErrorText = findViewById(R.id.errorText);
         final ImageView dislike = findViewById(R.id.dislike);
 
         ImageView boyImageView = findViewById(R.id.dislike_boy);

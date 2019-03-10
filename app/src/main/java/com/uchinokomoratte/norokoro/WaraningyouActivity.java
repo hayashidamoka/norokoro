@@ -2,6 +2,7 @@ package com.uchinokomoratte.norokoro;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -33,6 +34,15 @@ public class WaraningyouActivity extends AppCompatActivity {
                 noroiCount = noroiCount + 1;
                 String noroiCountText = String.valueOf(noroiCount);
                 countTextView.setText(noroiCountText);
+
+                Vibrator vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+                vibrator.vibrate(50);
+
+                ImageView kugi_push =findViewById(R.id.kugi_push);
+                if (noroiCount >= 5){
+                    kugi_push.setVisibility(View.GONE);
+                }
+
             }
         });
 
