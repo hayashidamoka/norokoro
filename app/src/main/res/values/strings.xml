@@ -9,4 +9,9 @@
         <item>みぎあし</item>
         <item>ひだりあし</item>
     </string-array>
+    <string name="name">かいと</string>
+    <string name="aitunokao">↓アイツのかお↓</string>
+    <string name="namaewoiretene">なまえをいれてね❤</string>
+    <string name="one">1</string>
+    <string name="error">↓なまえいれてよぅ(´･ω･`)ﾈｪﾈｪ</string>
 </resources>

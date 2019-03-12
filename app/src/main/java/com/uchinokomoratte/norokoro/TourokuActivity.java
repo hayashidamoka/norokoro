@@ -84,7 +84,7 @@ public class TourokuActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String name = nameEditText.getText().toString();
                 if(name.length() == 0){
-                    ErrorText.setText("↓なまえいれてよぅ(´･ω･`)ﾈｪﾈｪ" );
+                    ErrorText.setText(getString(R.string.error));
                 }else {
                     // 画像IDを保存
                     SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(TourokuActivity.this);

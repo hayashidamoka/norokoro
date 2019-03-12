@@ -48,7 +48,7 @@
     <ImageView
         android:id="@+id/dislikeImageView"
         android:padding="5dp"
-        android:background="#fff"
+        android:background="@color/white"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_marginTop="20dp"
@@ -59,11 +59,11 @@
         android:id="@+id/nameTextView"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        tools:text="かいと"
+        tools:text="@string/name"
         android:textSize="30sp"
-        android:textColor="#ffffff"
+        android:textColor="@color/white"
         android:textStyle="bold"
-        android:shadowColor="#000000"
+        android:shadowColor="@color/black"
         android:shadowDx="5"
         android:shadowDy="5"
         android:shadowRadius="2"
@@ -131,9 +131,5 @@
         <!--android:layout_alignParentStart="true"-->
         <!--android:paddingLeft="30dp"-->
         <!--android:layout_above="@+id/kaikorosita"/>-->
-
-
-
-
 
 </RelativeLayout>

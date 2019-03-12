@@ -20,13 +20,12 @@
         android:layout_height="150dp"
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
-        android:onClick="start"
         android:src="@drawable/start" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="↓アイツのかお↓"
+        android:text="@string/aitunokao"
         android:textSize="15sp"
         android:textStyle="bold"
         android:layout_above="@+id/dislike"/>
@@ -41,7 +40,7 @@
         android:src="@drawable/dislike_boy"
         android:padding="10dp"
         android:layout_marginBottom="20dp"
-        android:background="#fff"
+        android:background="@color/white"
         android:layout_above="@+id/nameEditText"/>
 
     <LinearLayout
@@ -49,7 +48,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:background="#ba55d3"
+        android:background="@color/mediumorchid"
         android:padding="3dp"
         android:layout_above="@+id/line">
 
@@ -82,7 +81,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:background="#ba55d3"
+        android:background="@color/mediumorchid"
         android:padding="3dp"
         android:layout_above="@+id/nameEditText">
 
@@ -115,7 +114,7 @@
         android:layout_height="50dp"
         android:layout_centerInParent="true"
         android:textSize="25sp"
-        android:hint="なまえをいれてね❤"
+        android:hint="@string/namaewoiretene"
         android:layout_above="@id/start"/>
 
     <ImageView
@@ -130,14 +129,14 @@
         android:id="@+id/errorText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="なまえをいれてよぅ(^_-)-☆"
+        tools:text="@string/error"
         android:textStyle="bold"
         android:textSize="20sp"
-        android:textColor="#D9ffffff"
-        android:shadowColor="#D9ee82ee"
+        android:textColor="@color/white"
+        android:shadowColor="@color/usuiViolet"
         android:shadowDx="5"
         android:shadowDy="5"
-        android:background="#D9dda0dd"
+        android:background="@color/usuiPlum"
         android:shadowRadius="2"
         android:layout_above="@+id/nameEditText"
         android:layout_centerInParent="true"
