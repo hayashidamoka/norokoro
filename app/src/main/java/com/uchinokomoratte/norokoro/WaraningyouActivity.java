@@ -45,9 +45,5 @@ public class WaraningyouActivity extends AppCompatActivity {
 
             }
         });
-
-
-
-
     }
 }
