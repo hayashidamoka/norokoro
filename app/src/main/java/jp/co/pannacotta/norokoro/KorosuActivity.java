@@ -1,8 +1,9 @@
-package com.uchinokomoratte.norokoro;
+package jp.co.pannacotta.norokoro;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+
 //あぷり
 public class KorosuActivity extends AppCompatActivity {
     @Override

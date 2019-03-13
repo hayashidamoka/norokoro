@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.uchinokomoratte.norokoro">
+    package="jp.co.pannacotta.norokoro">
     <uses-permission android:name="android.permission.VIBRATE"/>
 
     <application
@@ -9,27 +9,27 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".MainActivity"
+        <activity android:name="jp.co.pannacotta.norokoro.MainActivity"
             android:screenOrientation="portrait">
 
         </activity>
-        <activity android:name=".SplashActivity"
+        <activity android:name="jp.co.pannacotta.norokoro.SplashActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".NorouActivity"
+        <activity android:name="jp.co.pannacotta.norokoro.NorouActivity"
             android:screenOrientation="portrait"/>
 
-        <activity android:name=".WaraningyouActivity"
+        <activity android:name="jp.co.pannacotta.norokoro.WaraningyouActivity"
             android:screenOrientation="portrait"/>
 
-        <activity android:name=".KorosuActivity"
+        <activity android:name="jp.co.pannacotta.norokoro.KorosuActivity"
             android:screenOrientation="portrait"/>
 
-        <activity android:name=".TourokuActivity"
+        <activity android:name="jp.co.pannacotta.norokoro.TourokuActivity"
             android:screenOrientation="portrait"/>
 
 

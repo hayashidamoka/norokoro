@@ -1,4 +1,4 @@
-package com.uchinokomoratte.norokoro;
+package jp.co.pannacotta.norokoro;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
