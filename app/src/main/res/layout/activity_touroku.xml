@@ -1,145 +1,158 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/norokoro_haikei">
 
     <ImageView
-        android:id="@+id/norokoro_haikei"
+        android:id="@+id/installImageView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_centerVertical="true"
+        android:layout_height="250dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="36dp"
+        android:src="@drawable/install" />
+
+    <LinearLayout
+        android:layout_below="@+id/installImageView"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/norokoro_haikei"
-        android:scaleType="centerCrop" />
-
-    <ImageView
-        android:id="@+id/start"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerInParent="true"
-        android:src="@drawable/start" />
-
-    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/aitunokao"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        android:layout_above="@+id/dislike"/>
+        android:orientation="horizontal">
 
-    <ImageView
-        android:id="@+id/dislike"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_centerInParent="true"
-        android:src="@drawable/dislike_boy"
-        android:padding="10dp"
-        android:layout_marginBottom="20dp"
-        android:background="@color/white"
-        android:layout_above="@+id/nameEditText"/>
+        <LinearLayout
+            android:id="@+id/faceImageLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:background="@color/mediumorchid"
-        android:padding="3dp"
-        android:layout_above="@+id/line">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/aitunokao"
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
-    <ImageView
-        android:id="@+id/dislike_boy"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_margin="3dp"
-        android:src="@drawable/dislike_boy"/>
+            <ImageView
+                android:id="@+id/dislike"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:layout_marginBottom="20dp"
+                android:background="@color/white"
+                android:padding="10dp"
+                android:src="@drawable/dislike_boy" />
+        </LinearLayout>
 
-    <ImageView
-        android:id="@+id/dislike_girl"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_margin="3dp"
-        android:src="@drawable/dislike_girl"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/dislike_bare"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_margin="3dp"
-        android:src="@drawable/dislike_bare"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@color/mediumorchid"
+                android:padding="3dp">
+
+                <ImageView
+                    android:id="@+id/dislike_boy"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_margin="3dp"
+                    android:src="@drawable/dislike_boy" />
+
+                <ImageView
+                    android:id="@+id/dislike_girl"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_margin="3dp"
+                    android:src="@drawable/dislike_girl" />
+
+                <ImageView
+                    android:id="@+id/dislike_bare"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_margin="3dp"
+                    android:src="@drawable/dislike_bare" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@color/mediumorchid"
+                android:padding="3dp">
+
+                <ImageView
+                    android:id="@+id/dislike_mister"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_margin="3dp"
+                    android:src="@drawable/dislike_mister" />
+
+                <ImageView
+                    android:id="@+id/dislike_lady"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_margin="3dp"
+                    android:src="@drawable/dislike_lady" />
+
+                <ImageView
+                    android:id="@+id/dislike_devil"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_margin="3dp"
+                    android:src="@drawable/dislike_devil" />
+
+            </LinearLayout>
+
+        </LinearLayout>
 
     </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/line"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:background="@color/mediumorchid"
-        android:padding="3dp"
-        android:layout_above="@+id/nameEditText">
-
-    <ImageView
-        android:id="@+id/dislike_mister"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_margin="3dp"
-        android:src="@drawable/dislike_mister" />
-
-    <ImageView
-        android:id="@+id/dislike_lady"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_margin="3dp"
-        android:src="@drawable/dislike_lady" />
-
-    <ImageView
-        android:id="@+id/dislike_devil"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_margin="3dp"
-        android:src="@drawable/dislike_devil" />
-
-    </LinearLayout>
-
-    <EditText
-        android:id="@+id/nameEditText"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:layout_centerInParent="true"
-        android:textSize="25sp"
-        android:hint="@string/namaewoiretene"
-        android:layout_above="@id/start"/>
-
-    <ImageView
-        android:id="@+id/install"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="-350dp"
-        android:src="@drawable/install"
-        android:layout_alignParentTop="true" />
 
     <TextView
         android:id="@+id/errorText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="@string/error"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:textColor="@color/white"
+        android:layout_above="@+id/nameEditText"
+        android:layout_centerInParent="true"
+        android:background="@color/usuiPlum"
         android:shadowColor="@color/usuiViolet"
         android:shadowDx="5"
         android:shadowDy="5"
-        android:background="@color/usuiPlum"
         android:shadowRadius="2"
-        android:layout_above="@+id/nameEditText"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        tools:text="@string/error" />
+
+    <EditText
+        android:id="@+id/nameEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/startButton"
         android:layout_centerInParent="true"
-        />
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:hint="@string/namaewoiretene"
+        android:padding="8dp"
+        android:textSize="25sp" />
+
+    <ImageView
+        android:id="@+id/startButton"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/start" />
 
 </RelativeLayout>

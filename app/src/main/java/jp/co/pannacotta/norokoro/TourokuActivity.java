@@ -19,7 +19,7 @@ public class TourokuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_touroku);
         final EditText nameEditText = findViewById(R.id.nameEditText);
-        final ImageView start = findViewById(R.id.start);
+        final ImageView startButton = findViewById(R.id.startButton);
         final TextView ErrorText = findViewById(R.id.errorText);
         final ImageView dislike = findViewById(R.id.dislike);
 
@@ -77,7 +77,7 @@ public class TourokuActivity extends AppCompatActivity {
             }
         });
 
-        start.setOnClickListener(new View.OnClickListener() {
+        startButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
