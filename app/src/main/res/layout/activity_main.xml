@@ -14,15 +14,6 @@
         android:background="@drawable/norokoro_haikei"
         android:scaleType="centerCrop" />
 
-    <!--<ImageView-->
-        <!--android:id="@+id/erabu_button"-->
-        <!--android:layout_width="180dp"-->
-        <!--android:layout_height="180dp"-->
-        <!--android:layout_alignParentEnd="true"-->
-        <!--android:layout_alignParentRight="true"-->
-        <!--android:layout_alignParentTop="true"-->
-        <!--android:src="@drawable/koutai"/>-->
-
     <ImageView
         android:id="@+id/norou_button"
         android:layout_width="150dp"

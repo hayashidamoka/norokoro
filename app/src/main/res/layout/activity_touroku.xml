@@ -7,22 +7,19 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:fitsSystemWindows="true"
-        android:background="@drawable/norokoro_haikei"
-        >
+        android:background="@drawable/norokoro_haikei">
 
         <ImageView
             android:id="@+id/installImageView"
             android:layout_width="match_parent"
             android:layout_height="250dp"
-            android:layout_marginTop="36dp"
-            android:src="@drawable/install" />
+            android:src="@drawable/touroku_setumei" />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/dislike_image_view"
-            android:layout_width="300dp"
-            android:layout_height="300dp"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
             android:layout_gravity="center"
-            android:layout_margin="8dp"
             android:focusable="true"
             android:focusableInTouchMode="true"/>
 
@@ -47,13 +44,14 @@
 
         </android.support.design.widget.TextInputLayout>
 
+
         <ImageView
             android:id="@+id/startButton"
             android:layout_width="200dp"
             android:layout_height="200dp"
             android:gravity="center_horizontal"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="24dp"
             android:src="@drawable/start" />
+
 
     </LinearLayout>

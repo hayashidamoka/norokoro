@@ -10,9 +10,8 @@
         <item>ひだりあし</item>
     </string-array>
     <string name="name">かいと</string>
-    <string name="aitunokao">↓アイツのかお↓</string>
-    <string name="namaewoiretene">なまえをいれてね❤</string>
+    <string name="namaewoiretene">アイツのなまえをいれてね❤</string>
     <string name="one">1</string>
-    <string name="error">↓なまえいれてよぅ(´･ω･`)ﾈｪﾈｪ</string>
+    <string name="error">なまえをいれてよぅ(´･ω･`)</string>
     <string name="add_picture_failed_message">画像の保存に失敗しました</string>
 </resources>

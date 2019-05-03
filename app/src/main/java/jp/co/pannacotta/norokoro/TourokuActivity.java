@@ -35,7 +35,7 @@ public class TourokuActivity extends AppCompatActivity implements View.OnClickLi
 
     private Uri galleryUri;
     private EditText nameEditText;
-    final ImageView startButton = findViewById(R.id.startButton);
+    private ImageView startButton;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -44,8 +44,9 @@ public class TourokuActivity extends AppCompatActivity implements View.OnClickLi
 
         dislikeImageView = (CircleImageView) findViewById(R.id.dislike_image_view);
         dislikeImageView.setOnClickListener(this);
-        dislikeImageView.setImageResource(R.drawable.dislike_boy);
+        dislikeImageView.setImageResource(R.drawable.dislike_default);
         nameEditText = (EditText) findViewById(R.id.name_edit_text);
+        startButton = (ImageView) findViewById(R.id.startButton);
 
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
