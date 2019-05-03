@@ -1,5 +1,6 @@
 package jp.co.pannacotta.norokoro;
 
+import android.annotation.SuppressLint;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -8,64 +9,59 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.preference.PreferenceManager;
 import android.provider.MediaStore;
-import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.text.TextUtils;
 import android.view.View;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.File;
 import java.io.IOException;
 
-import de.hdodenhof.circleimageview.CircleImageView;
 import jp.co.pannacotta.norokoro.utill.BitmapUtil;
 
 public class TourokuActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final int REQUEST_GALLERY = 1;
 
-    private CircleImageView dislikeImageView;
+    private ImageView dislikeImageView;
 
     private Uri galleryUri;
     private EditText nameEditText;
     private ImageView startButton;
+    private String name;
+    private String imagePath;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_touroku);
 
-        dislikeImageView = (CircleImageView) findViewById(R.id.dislike_image_view);
+        dislikeImageView = findViewById(R.id.dislike_image_view);
         dislikeImageView.setOnClickListener(this);
         dislikeImageView.setImageResource(R.drawable.dislike_default);
-        nameEditText = (EditText) findViewById(R.id.name_edit_text);
-        startButton = (ImageView) findViewById(R.id.startButton);
+        nameEditText = findViewById(R.id.name_edit_text);
+        startButton = findViewById(R.id.startButton);
 
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String name = nameEditText.getText().toString();
+                name = nameEditText.getText().toString();
                 if (name.length() == 0) {
                     Toast.makeText(TourokuActivity.this, getString(R.string.error), Toast.LENGTH_SHORT).show();
                 }
-                if (!(galleryUri == null)) {
-                    // 写真保存
+                if (galleryUri != null) {
+                    // 写真と名前の保存
                     SavePhotoThread thread = new SavePhotoThread();
                     thread.start();
                 } else {
                     // 名前の保存
-                    SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(TourokuActivity.this);
-                    prefs.edit().putString("DISLIKE_NAME", name).apply();
-                    Intent intent = new Intent();
-                    intent.setClass(TourokuActivity.this, MainActivity.class);
-                    startActivity(intent);
+                    saveData();
+                    goTourokuActivity();
                     finish();
                 }
 
@@ -132,8 +128,10 @@ public class TourokuActivity extends AppCompatActivity implements View.OnClickLi
                         Cursor cursor = cr.query(uri, columns, null, null, null);
                         if (cursor != null) {
                             cursor.moveToFirst();
+                            imagePath = cursor.getString(0);
                             cursor.close();
                             isHalt = true;
+                            savePhotoHandler.sendEmptyMessage(0);
                         }
                     }
                 }
@@ -147,7 +145,26 @@ public class TourokuActivity extends AppCompatActivity implements View.OnClickLi
 
     }
 
+    @SuppressLint("HandlerLeak")
+    private Handler savePhotoHandler = new Handler() {
+        public void dispatchMessage(Message msg) {
+            saveData();
+            goTourokuActivity();
+            finish();
+        }
+    };
 
+    private void saveData() {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(TourokuActivity.this);
+        prefs.edit().putString("DISLIKE_NAME", name).apply();
+        prefs.edit().putString("DISLIKE_IMAGE_PATH", imagePath).apply();
+    }
+
+    private void goTourokuActivity() {
+        Intent intent = new Intent();
+        intent.setClass(TourokuActivity.this, MainActivity.class);
+        startActivity(intent);
+    }
 }
 
 

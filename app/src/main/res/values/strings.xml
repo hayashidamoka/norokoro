@@ -9,7 +9,7 @@
         <item>みぎあし</item>
         <item>ひだりあし</item>
     </string-array>
-    <string name="name">かいと</string>
+    <string name="blank"> </string>
     <string name="namaewoiretene">アイツのなまえをいれてね❤</string>
     <string name="one">1</string>
     <string name="error">なまえをいれてよぅ(´･ω･`)</string>

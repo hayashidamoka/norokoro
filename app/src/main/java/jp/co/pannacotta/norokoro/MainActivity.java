@@ -6,9 +6,14 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
+
+import java.io.File;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -34,17 +39,19 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        ImageView dislikeImageView = findViewById(R.id.dislike_image_view);
+
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
 
-
-        int gazouNoID = prefs.getInt("GAZOU_NO_ID",R.drawable.dislike_boy);
-        String dislike_name = prefs.getString("DISLIKE_NAME","@string/name");
-
-         ImageView dislikeImageView = findViewById(R.id.dislikeImageView);
-         dislikeImageView.setImageResource(gazouNoID);
+        String dislike_name = prefs.getString("DISLIKE_NAME",getString(R.string.blank));
+        String dislike_image_path = prefs.getString("DISLIKE_IMAGE_PATH",getString(R.string.blank));
 
         TextView nameTextView = findViewById(R.id.nameTextView);
         nameTextView.setText(dislike_name);
+
+        if(!TextUtils.isEmpty(dislike_image_path)) {
+            Picasso.with(this).load(new File(dislike_image_path)).into(dislikeImageView);
+        }
 
     }
 }
