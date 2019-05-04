@@ -6,9 +6,14 @@ import android.os.Vibrator;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
+
+import java.io.File;
 
 public class WaraningyouActivity extends AppCompatActivity {
     int noroiCount = 0;
@@ -18,13 +23,17 @@ public class WaraningyouActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_waraningyou);
 
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-
-
-        int gazouNoID = prefs.getInt("GAZOU_NO_ID",R.drawable.dislike_boy);
-
         ImageView dislikeImageView = findViewById(R.id.dislikeImageView);
-        dislikeImageView.setImageResource(gazouNoID);
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        String dislike_image_path = prefs.getString("DISLIKE_IMAGE_PATH",getString(R.string.blank));
+
+
+        if(!TextUtils.isEmpty(dislike_image_path)) {
+            //dislike_image_pathファイルをdislikeImageViewにintoする
+            Picasso.with(this).load(new File(dislike_image_path)).into(dislikeImageView);
+        }
+
+
         final TextView countTextView = findViewById(R.id.countTextView);
         ImageView kugibutton = findViewById(R.id.kugi);
 

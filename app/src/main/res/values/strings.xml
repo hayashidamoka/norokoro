@@ -14,4 +14,7 @@
     <string name="one">1</string>
     <string name="error">なまえをいれてよぅ(´･ω･`)</string>
     <string name="add_picture_failed_message">画像の保存に失敗しました</string>
+    <string name="app_finish_message">アプリを終了する</string>
+    <string name="permission_message">アイツの写真をアプリに設定するために、権限を許可してください。\n許可して頂けない場合、申し訳ございませんがアプリをご利用頂けません。</string>
+    <string name="permission_yes">わかりました</string>
 </resources>

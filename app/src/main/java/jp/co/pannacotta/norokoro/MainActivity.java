@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         nameTextView.setText(dislike_name);
 
         if(!TextUtils.isEmpty(dislike_image_path)) {
+            //dislike_image_pathファイルをdislikeImageViewにintoする
             Picasso.with(this).load(new File(dislike_image_path)).into(dislikeImageView);
         }
 
