@@ -1,55 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/norokoro_haikei"
     android:fitsSystemWindows="true">
 
-    <LinearLayout
+    <ImageView
+        android:id="@+id/installImageView"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:src="@drawable/touroku_setumei"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/dislike_image_view"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="24dp"
+        android:background="@color/white"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:padding="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/installImageView" />
+
+    <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:orientation="vertical">
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginRight="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dislike_image_view">
 
-        <ImageView
-            android:id="@+id/installImageView"
-            android:layout_width="match_parent"
-            android:layout_height="180dp"
-            android:src="@drawable/touroku_setumei" />
-
-        <ImageView
-            android:id="@+id/dislike_image_view"
-            android:layout_width="180dp"
-            android:layout_height="180dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="24dp"
-            android:background="@color/white"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:padding="5dp" />
-
-        <android.support.design.widget.TextInputLayout
+        <EditText
+            android:id="@+id/name_edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginRight="16dp">
+            android:hint="@string/namaewoiretene"
+            android:inputType="text"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:autofillHints="@string/namaewoiretene"/>
 
-            <EditText
-                android:id="@+id/name_edit_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/namaewoiretene"
-                android:inputType="text"
-                android:maxLines="1"
-                android:singleLine="true" />
-
-        </android.support.design.widget.TextInputLayout>
-
-    </LinearLayout>
+    </android.support.design.widget.TextInputLayout>
 
 
     <ImageView
@@ -61,8 +62,11 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="20dp"
         android:gravity="center_horizontal"
-        android:src="@drawable/start" />
-</RelativeLayout>
+        android:src="@drawable/start"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</android.support.constraint.ConstraintLayout>
 
 
 
