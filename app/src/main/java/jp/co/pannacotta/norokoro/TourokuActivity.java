@@ -10,8 +10,9 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.ImageFormat;
+import android.graphics.Rect;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -23,7 +24,9 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.TypedValue;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -37,6 +40,8 @@ public class TourokuActivity extends AppCompatActivity implements View.OnClickLi
     private static final int REQUEST_WRITE_EX_STRAGE_PERMISSION = 0;
     private static final int REQUEST_GALLERY = 1;
 
+    // 登録タイトルのImageViewを定義する
+    private ImageView titleImageView;
     private ImageView dislikeImageView;
 
     private Uri galleryUri;
@@ -49,13 +54,24 @@ public class TourokuActivity extends AppCompatActivity implements View.OnClickLi
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_touroku);
+        //TODO 北原が作成したレイアウトファイル
+        setContentView(R.layout.activity_touroku_kitahara);
 
+        titleImageView = findViewById(R.id.installImageView);
         dislikeImageView = findViewById(R.id.dislike_image_view);
         dislikeImageView.setOnClickListener(this);
         dislikeImageView.setImageResource(R.drawable.dislike_default);
         nameEditText = findViewById(R.id.name_edit_text);
         startButton = findViewById(R.id.startButton);
+
+        // キーボード表示・非表示のイベント設定する
+        setKeyboardVisibilityListener(new OnKeyboardVisibilityListener() {
+            @Override
+            public void onVisibilityChanged(boolean imeVisible) {
+                // IMEが表示されている？ titleの画像を消す : titleの画像を表示する
+                titleImageView.setVisibility((imeVisible) ? View.GONE : View.VISIBLE);
+            }
+        });
 
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -213,6 +229,47 @@ public class TourokuActivity extends AppCompatActivity implements View.OnClickLi
                 break;
             }
         }
+    }
+
+    /**
+     * キーボード表示・非表示イベントのリスナー
+     */
+    private interface OnKeyboardVisibilityListener{
+        void onVisibilityChanged(boolean imeVisible);
+    }
+
+    /**
+     * キーボード表示・非表示のイベントリスナー設定
+     */
+    private void setKeyboardVisibilityListener(final OnKeyboardVisibilityListener onKeyboardVisibilityListener) {
+        // レイアウトの最上位のViewを取得する
+        final View parentView = findViewById(R.id.parent_view);
+
+        // 最上位のViewのサイズを取得する
+        parentView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            private boolean alreadyOpen;
+            // 一般的な IME のサイズ (dp)：ただし経験則
+            private final int defaultKeyboardHeightDP = 100;
+            //TODO 48dpプラスする理由がわからない・・・
+            private final int EstimatedKeyboardDP = defaultKeyboardHeightDP + (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP ? 48 : 0);
+            private final Rect rect = new Rect();
+            @Override
+            public void onGlobalLayout() {
+                // dpをpxで変更
+                int estimatedKeyboardHeight = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, EstimatedKeyboardDP, parentView.getResources().getDisplayMetrics());
+                parentView.getWindowVisibleDisplayFrame(rect);
+                // 最上位のViewの高さの変更サイズを取得する
+                int heightDiff = parentView.getRootView().getHeight() - (rect.bottom - rect.top);
+
+                // 変更サイズが、IMEのサイズ以上であれば、IMEを表示されたことにする
+                boolean isShown = heightDiff >= estimatedKeyboardHeight;
+                if (isShown == alreadyOpen) {
+                    return;
+                }
+                alreadyOpen = isShown;
+                onKeyboardVisibilityListener.onVisibilityChanged(isShown);
+            }
+        });
     }
 }
 
