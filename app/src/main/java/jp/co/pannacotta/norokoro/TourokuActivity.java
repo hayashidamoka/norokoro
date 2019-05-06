@@ -10,7 +10,6 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.ImageFormat;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -24,10 +23,10 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -47,6 +46,8 @@ public class TourokuActivity extends AppCompatActivity implements View.OnClickLi
     private String name;
     private String imagePath;
 
+    private TextView rotateText;
+    private int rotateCount = 0;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -81,10 +82,25 @@ public class TourokuActivity extends AppCompatActivity implements View.OnClickLi
 
         });
 
+        rotateText = findViewById(R.id.rotate_text);
+        rotateText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                rotateCount += 1;
+                // 4回押すと一周する
+                if (rotateCount == 4) rotateCount = 0;
+                rotateImageView(dislikeImageView, rotateCount);
+            }
+        });
+
         //もしSDカードの書き込みに許可してもらってなかったらパーミッションをリクエストする
         if(ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_WRITE_EX_STRAGE_PERMISSION);
         }
+    }
+
+    private void rotateImageView(ImageView imageView, int rotateCount) {
+        imageView.setRotation(90.0f * rotateCount);
     }
 
     @Override
@@ -175,6 +191,7 @@ public class TourokuActivity extends AppCompatActivity implements View.OnClickLi
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(TourokuActivity.this);
         prefs.edit().putString("DISLIKE_NAME", name).apply();
         prefs.edit().putString("DISLIKE_IMAGE_PATH", imagePath).apply();
+        prefs.edit().putInt("DISLIKE_IMAGE_ROTATE_COUNT", rotateCount).apply();
     }
 
     private void goTourokuActivity() {

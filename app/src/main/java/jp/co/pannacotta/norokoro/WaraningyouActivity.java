@@ -26,11 +26,12 @@ public class WaraningyouActivity extends AppCompatActivity {
         ImageView dislikeImageView = findViewById(R.id.dislikeImageView);
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         String dislike_image_path = prefs.getString("DISLIKE_IMAGE_PATH",getString(R.string.blank));
+        int dislike_image_rotate = prefs.getInt("DISLIKE_IMAGE_ROTATE_COUNT", 0);
 
 
         if(!TextUtils.isEmpty(dislike_image_path)) {
             //dislike_image_pathファイルをdislikeImageViewにintoする
-            Picasso.with(this).load(new File(dislike_image_path)).into(dislikeImageView);
+            Picasso.with(this).load(new File(dislike_image_path)).rotate(90.0f * dislike_image_rotate).into(dislikeImageView);
         }
 
 
