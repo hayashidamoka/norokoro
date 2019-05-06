@@ -14,13 +14,23 @@
         android:background="@drawable/noronoro_haikei"
         android:scaleType="centerCrop" />
 
-   <ImageView
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:layout_alignParentBottom="true"
-       android:layout_marginBottom="40dp"
-       android:id="@+id/norokaisuu"
-       android:src="@drawable/norokaisuu"/>
+
+    <ImageView
+        android:id="@+id/waraningyouImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="100dp"
+        android:src="@drawable/waraningyou" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="40dp"
+        android:id="@+id/norokaisuu"
+        android:src="@drawable/norokaisuu"/>
 
     <TextView
         android:id="@+id/countTextView"
@@ -32,15 +42,6 @@
         android:textColor="@color/white"
         android:textSize="80sp"
         tools:text="@string/one" />
-
-    <ImageView
-        android:id="@+id/waraningyouImageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="100dp"
-        android:src="@drawable/waraningyou" />
 
     <ImageView
         android:id="@+id/kugi_push"

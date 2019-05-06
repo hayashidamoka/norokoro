@@ -23,6 +23,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -63,16 +64,17 @@ public class TourokuActivity extends AppCompatActivity implements View.OnClickLi
                 name = nameEditText.getText().toString();
                 if (name.length() == 0) {
                     Toast.makeText(TourokuActivity.this, getString(R.string.error), Toast.LENGTH_SHORT).show();
-                }
-                if (galleryUri != null) {
-                    // 写真と名前の保存
-                    SavePhotoThread thread = new SavePhotoThread();
-                    thread.start();
                 } else {
-                    // 名前の保存
-                    saveData();
-                    goTourokuActivity();
-                    finish();
+                    if (galleryUri != null) {
+                        // 写真と名前の保存
+                        SavePhotoThread thread = new SavePhotoThread();
+                        thread.start();
+                    } else {
+                        // 名前の保存
+                        saveData();
+                        goTourokuActivity();
+                        finish();
+                    }
                 }
             }
 
