@@ -23,6 +23,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.EditText;
@@ -62,7 +63,7 @@ public class TourokuActivity extends AppCompatActivity implements View.OnClickLi
             @Override
             public void onClick(View v) {
                 name = nameEditText.getText().toString();
-                if (name.length() == 0) {
+                if (TextUtils.isEmpty(name)) {
                     Toast.makeText(TourokuActivity.this, getString(R.string.error), Toast.LENGTH_SHORT).show();
                 } else {
                     if (galleryUri != null) {
