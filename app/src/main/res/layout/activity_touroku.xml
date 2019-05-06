@@ -1,69 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/norokoro_haikei"
     android:fitsSystemWindows="true">
 
-    <!--<LinearLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_alignParentTop="true"-->
-        <!--android:layout_centerHorizontal="true"-->
-        <!--android:orientation="vertical">-->
+    <ImageView
+        android:id="@+id/installImageView"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:src="@drawable/touroku_setumei"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/installImageView"
-            android:layout_width="match_parent"
-            android:layout_height="180dp"
-            android:src="@drawable/touroku_setumei" />
+    <ImageView
+        android:id="@+id/dislike_image_view"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="24dp"
+        android:background="@color/white"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:padding="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/installImageView" />
 
-        <ImageView
-            android:id="@+id/dislike_image_view"
-            android:layout_width="180dp"
-            android:layout_height="180dp"
-            android:layout_centerInParent="true"
-            android:layout_gravity="center"
-            android:padding="5dp"
-            android:background="@color/white"
-            android:focusable="true"
-            android:focusableInTouchMode="true" />
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginRight="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dislike_image_view">
 
-        <android.support.design.widget.TextInputLayout
+        <EditText
+            android:id="@+id/name_edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/dislike_image_view"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginRight="16dp">
+            android:hint="@string/namaewoiretene"
+            android:inputType="text"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:autofillHints="@string/namaewoiretene"/>
 
-            <EditText
-                android:id="@+id/name_edit_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:hint="@string/namaewoiretene"
-                android:inputType="textPersonName"
-                android:maxLines="1"
-                android:singleLine="true"
-                android:textAppearance="@style/TextAppearance.AppCompat.Menu" />
-
-        </android.support.design.widget.TextInputLayout>
-
-    <!--</LinearLayout>-->
+    </android.support.design.widget.TextInputLayout>
 
 
     <ImageView
         android:id="@+id/startButton"
         android:layout_width="130dp"
-        android:layout_height="130dp"
+        android:layout_height="100dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="20dp"
         android:gravity="center_horizontal"
-        android:src="@drawable/start" />
-</RelativeLayout>
+        android:src="@drawable/start"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</android.support.constraint.ConstraintLayout>
 
 
 
