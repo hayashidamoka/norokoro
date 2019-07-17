@@ -30,7 +30,7 @@ public class WaraningyouActivity extends AppCompatActivity {
 
         if(!TextUtils.isEmpty(dislike_image_path)) {
             //dislike_image_pathファイルをdislikeImageViewにintoする
-            Picasso.with(this).load(new File(dislike_image_path)).into(dislikeImageView);
+            Picasso.get().load(new File(dislike_image_path)).into(dislikeImageView);
         }
 
 
