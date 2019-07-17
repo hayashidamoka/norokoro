@@ -10,7 +10,6 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -20,11 +19,13 @@ import android.provider.MediaStore;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -33,10 +34,12 @@ import java.io.IOException;
 
 import jp.co.pannacotta.norokoro.utill.BitmapUtil;
 
-public class TourokuActivity extends AppCompatActivity implements View.OnClickListener {
 
+public class TourokuFragment extends Fragment {
     private static final int REQUEST_WRITE_EX_STRAGE_PERMISSION = 0;
     private static final int REQUEST_GALLERY = 1;
+
+    private static NorokoroMediaPlayer player = NorokoroMediaPlayer.getInstance();
 
     private ImageView dislikeImageView;
 
@@ -46,57 +49,65 @@ public class TourokuActivity extends AppCompatActivity implements View.OnClickLi
     private String name;
     private String imagePath;
 
-    private static NorokoroMediaPlayer player = NorokoroMediaPlayer.getInstance();
+
 
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_touroku);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        super.onCreateView(inflater, container, savedInstanceState);
+        View view = inflater.inflate(R.layout.fragment_touroku, container, false);
 
-        dislikeImageView = findViewById(R.id.dislike_image_view);
-        dislikeImageView.setOnClickListener(this);
-        dislikeImageView.setImageResource(R.drawable.dislike_default);
-        nameEditText = findViewById(R.id.name_edit_text);
-        startButton = findViewById(R.id.startButton);
+            dislikeImageView = view.findViewById(R.id.dislike_image_view);
+            dislikeImageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(Intent.ACTION_PICK,
+                            android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    startActivityForResult(intent, REQUEST_GALLERY);
+                }
+            });
+            dislikeImageView.setImageResource(R.drawable.dislike_default);
+            nameEditText = view.findViewById(R.id.name_edit_text);
+            startButton = view.findViewById(R.id.startButton);
 
-        startButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                name = nameEditText.getText().toString();
-                if (TextUtils.isEmpty(name)) {
-                    Toast.makeText(TourokuActivity.this, getString(R.string.error), Toast.LENGTH_SHORT).show();
-                } else {
-                    if (galleryUri != null) {
-                        // 写真と名前の保存
-                        SavePhotoThread thread = new SavePhotoThread();
-                        thread.start();
+            startButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    name = nameEditText.getText().toString();
+                    if (TextUtils.isEmpty(name)) {
+                        Toast.makeText(getActivity(), getString(R.string.error), Toast.LENGTH_SHORT).show();
                     } else {
-                        // 名前の保存
-                        saveData();
-                        goTourokuActivity();
-                        finish();
+                        if (galleryUri != null) {
+                            // 写真と名前の保存
+                            TourokuFragment.SavePhotoThread thread = new TourokuFragment.SavePhotoThread();
+                            thread.start();
+                        } else {
+                            // 名前の保存
+                            saveData();
+                            goTourokuActivity();
+                            finish();
+                        }
                     }
                 }
+
+            });
+
+            //もしSDカードの書き込みに許可してもらってなかったらパーミッションをリクエストする
+            if(ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_WRITE_EX_STRAGE_PERMISSION);
             }
 
-        });
 
-        //もしSDカードの書き込みに許可してもらってなかったらパーミッションをリクエストする
-        if(ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_WRITE_EX_STRAGE_PERMISSION);
-        }
+
+        // 先ほどのレイアウトをここでViewとして作成します
+        return view;
     }
 
     @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.dislike_image_view:
-                Intent intent = new Intent(Intent.ACTION_PICK,
-                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(intent, REQUEST_GALLERY);
-                break;
-        }
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+
     }
 
     @Override
@@ -218,12 +229,4 @@ public class TourokuActivity extends AppCompatActivity implements View.OnClickLi
             }
         }
     }
-
-    public void playSound(View view){
-        if(player.mp == null)
-            player.mp = MediaPlayer.create(getApplicationContext(), R.raw.mainsong);
-            player.mp.start();
-    }
 }
-
-

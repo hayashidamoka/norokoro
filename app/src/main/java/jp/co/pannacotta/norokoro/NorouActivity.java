@@ -1,6 +1,7 @@
 package jp.co.pannacotta.norokoro;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -9,10 +10,14 @@ import android.widget.Button;
 
 //あぷり
 public class NorouActivity extends AppCompatActivity {
+
+    private MediaPlayer mediaPlayer;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_norou);
+
+        music_start();
 
         Button noroubutton = findViewById(R.id.norou_button);
         noroubutton.setOnClickListener(new View.OnClickListener() {
@@ -23,6 +28,12 @@ public class NorouActivity extends AppCompatActivity {
             }
         });
 
-
     }
+    private void music_start(){
+        mediaPlayer = MediaPlayer.create(getBaseContext(),R.raw.norousong);
+        mediaPlayer.setLooping(true);
+        mediaPlayer.seekTo(0);
+        mediaPlayer.start();
+    }
+
 }

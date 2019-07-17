@@ -2,6 +2,7 @@ package jp.co.pannacotta.norokoro;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
@@ -17,6 +18,8 @@ import java.io.File;
 
 
 public class MainActivity extends AppCompatActivity {
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,4 +58,5 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
 }
