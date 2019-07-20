@@ -10,6 +10,7 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -18,6 +19,7 @@ import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
@@ -34,12 +36,10 @@ import java.io.IOException;
 
 import jp.co.pannacotta.norokoro.utill.BitmapUtil;
 
+public class TourokuFragment extends Fragment implements View.OnClickListener {
 
-public class TourokuFragment extends Fragment {
     private static final int REQUEST_WRITE_EX_STRAGE_PERMISSION = 0;
     private static final int REQUEST_GALLERY = 1;
-
-    private static NorokoroMediaPlayer player = NorokoroMediaPlayer.getInstance();
 
     private ImageView dislikeImageView;
 
@@ -49,65 +49,56 @@ public class TourokuFragment extends Fragment {
     private String name;
     private String imagePath;
 
+    private static NorokoroMediaPlayer player = NorokoroMediaPlayer.getInstance();
 
-
-
+    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        super.onCreateView(inflater, container, savedInstanceState);
-        View view = inflater.inflate(R.layout.fragment_touroku, container, false);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_touroku, container);
+        dislikeImageView = view.findViewById(R.id.dislike_image_view);
+        dislikeImageView.setOnClickListener(this);
+        dislikeImageView.setImageResource(R.drawable.dislike_default);
+        nameEditText = view.findViewById(R.id.name_edit_text);
+        startButton = view.findViewById(R.id.startButton);
 
-            dislikeImageView = view.findViewById(R.id.dislike_image_view);
-            dislikeImageView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(Intent.ACTION_PICK,
-                            android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                    startActivityForResult(intent, REQUEST_GALLERY);
-                }
-            });
-            dislikeImageView.setImageResource(R.drawable.dislike_default);
-            nameEditText = view.findViewById(R.id.name_edit_text);
-            startButton = view.findViewById(R.id.startButton);
-
-            startButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    name = nameEditText.getText().toString();
-                    if (TextUtils.isEmpty(name)) {
-                        Toast.makeText(getActivity(), getString(R.string.error), Toast.LENGTH_SHORT).show();
+        startButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                name = nameEditText.getText().toString();
+                if (TextUtils.isEmpty(name)) {
+                    Toast.makeText(getActivity(), getString(R.string.error), Toast.LENGTH_SHORT).show();
+                } else {
+                    if (galleryUri != null) {
+                        // 写真と名前の保存
+                        SavePhotoThread thread = new SavePhotoThread();
+                        thread.start();
                     } else {
-                        if (galleryUri != null) {
-                            // 写真と名前の保存
-                            TourokuFragment.SavePhotoThread thread = new TourokuFragment.SavePhotoThread();
-                            thread.start();
-                        } else {
-                            // 名前の保存
-                            saveData();
-                            goTourokuActivity();
-                            finish();
-                        }
+                        // 名前の保存
+                        saveData();
+                        goTourokuActivity();
+                        requireActivity().finish();
                     }
                 }
-
-            });
-
-            //もしSDカードの書き込みに許可してもらってなかったらパーミッションをリクエストする
-            if(ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_WRITE_EX_STRAGE_PERMISSION);
             }
 
+        });
 
-
-        // 先ほどのレイアウトをここでViewとして作成します
+        //もしSDカードの書き込みに許可してもらってなかったらパーミッションをリクエストする
+        if(ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(requireActivity(), new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_WRITE_EX_STRAGE_PERMISSION);
+        }
         return view;
     }
 
     @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.dislike_image_view:
+                Intent intent = new Intent(Intent.ACTION_PICK,
+                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(intent, REQUEST_GALLERY);
+                break;
+        }
     }
 
     @Override
@@ -145,7 +136,7 @@ public class TourokuFragment extends Fragment {
                         bitmap = MediaStore.Images.Media
                                 .getBitmap(getContentResolver(), galleryUri);
                     } catch (IOException e) {
-                        Toast.makeText(TourokuActivity.this, getString(R.string.add_picture_failed_message), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(TourokuFragment.this, getString(R.string.add_picture_failed_message), Toast.LENGTH_SHORT).show();
                     } finally {
                         Bitmap resizedBitmap = BitmapUtil.resize(bitmap);
                         long time = System.currentTimeMillis();
@@ -184,14 +175,14 @@ public class TourokuFragment extends Fragment {
     };
 
     private void saveData() {
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(TourokuActivity.this);
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(TourokuFragment.this);
         prefs.edit().putString("DISLIKE_NAME", name).apply();
         prefs.edit().putString("DISLIKE_IMAGE_PATH", imagePath).apply();
     }
 
     private void goTourokuActivity() {
         Intent intent = new Intent();
-        intent.setClass(TourokuActivity.this, MainActivity.class);
+        intent.setClass(TourokuFragment.this, ChooseFragment.class);
         startActivity(intent);
     }
 
@@ -205,7 +196,7 @@ public class TourokuFragment extends Fragment {
                     dialog.setMessage(getString(R.string.permission_message)).setPositiveButton(getString(R.string.permission_yes), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            if (!(ActivityCompat.shouldShowRequestPermissionRationale(TourokuActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE))) {
+                            if (!(ActivityCompat.shouldShowRequestPermissionRationale(TourokuFragment.this, Manifest.permission.WRITE_EXTERNAL_STORAGE))) {
                                 // permissionをずっと拒否にした時に dialogを送る
                                 Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
                                 //Fragmentの時はgetContext().getPackageName()
@@ -213,7 +204,7 @@ public class TourokuFragment extends Fragment {
                                 intent.setData(uri);
                                 startActivity(intent);
                             } else {
-                                ActivityCompat.requestPermissions(TourokuActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_WRITE_EX_STRAGE_PERMISSION);
+                                ActivityCompat.requestPermissions(TourokuFragment.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_WRITE_EX_STRAGE_PERMISSION);
                             }
                         }
                     }).setNegativeButton(getString(R.string.app_finish_message), new DialogInterface.OnClickListener() {
@@ -229,4 +220,12 @@ public class TourokuFragment extends Fragment {
             }
         }
     }
+
+    public void playSound(View view){
+        if(player.mp == null)
+            player.mp = MediaPlayer.create(getApplicationContext(), R.raw.mainsong);
+            player.mp.start();
+    }
 }
+
+

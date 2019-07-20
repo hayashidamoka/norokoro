@@ -33,7 +33,7 @@
         <activity android:name="jp.co.pannacotta.norokoro.KorosuActivity"
             android:screenOrientation="portrait"/>
 
-        <activity android:name="jp.co.pannacotta.norokoro.TourokuActivity"
+        <activity android:name="jp.co.pannacotta.norokoro.TourokuFragment"
             android:screenOrientation="portrait"/>
 
 

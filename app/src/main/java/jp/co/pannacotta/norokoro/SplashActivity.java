@@ -18,7 +18,7 @@ public class SplashActivity extends AppCompatActivity {
             public void run() {
                 if (!isFinishing()) {
                     // isFinishingでチェックしないとバックキーを押したとき登録画面にいってしまう
-                    Intent intent = new Intent(SplashActivity.this, TourokuActivity.class);
+                    Intent intent = new Intent(SplashActivity.this, TourokuFragment.class);
                     startActivity(intent);
                     finish();
                 }
