@@ -2,11 +2,11 @@ package jp.co.pannacotta.norokoro
 
 import android.content.Intent
 import android.os.Bundle
-import android.preference.PreferenceManager
-import android.support.v7.app.AppCompatActivity
+import androidx.preference.PreferenceManager
 import android.text.TextUtils
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import com.squareup.picasso.Picasso
 import java.io.File
 
@@ -14,6 +14,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         val noroubutton = findViewById<ImageView>(R.id.norou_button)
         val korosubutton = findViewById<ImageView>(R.id.korosu_button)
         val dislikeImageView = findViewById<ImageView>(R.id.dislike_image_view)
@@ -31,6 +32,7 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent()
             intent.setClass(this@MainActivity, KorosuActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
         nameTextView.text = dislike_name

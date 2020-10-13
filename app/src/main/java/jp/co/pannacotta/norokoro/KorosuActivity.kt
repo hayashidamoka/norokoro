@@ -2,9 +2,8 @@ package jp.co.pannacotta.norokoro
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.widget.Button
-import android.widget.ImageView
+import androidx.appcompat.app.AppCompatActivity
 
 class KorosuActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,6 +15,7 @@ class KorosuActivity : AppCompatActivity() {
         backButton.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
+            finish()
         }
     }
 }

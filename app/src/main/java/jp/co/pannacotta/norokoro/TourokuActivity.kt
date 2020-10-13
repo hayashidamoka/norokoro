@@ -7,23 +7,23 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.ImageDecoder
 import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.os.Message
-import android.preference.PreferenceManager
+import androidx.preference.PreferenceManager
 import android.provider.MediaStore
 import android.provider.Settings
-import android.support.v4.app.ActivityCompat
-import android.support.v4.content.ContextCompat
-import android.support.v7.app.AlertDialog
-import android.support.v7.app.AppCompatActivity
 import android.text.TextUtils
 import android.view.View
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
-import jp.co.pannacotta.norokoro.TourokuActivity
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import jp.co.pannacotta.norokoro.utill.BitmapUtil
 import java.io.IOException
 
@@ -105,8 +105,8 @@ class TourokuActivity : AppCompatActivity(), View.OnClickListener {
                 var bitmap: Bitmap? = null
                 if (galleryUri != null) {
                     try {
-                        bitmap = MediaStore.Images.Media
-                                .getBitmap(contentResolver, galleryUri)
+                        val source = ImageDecoder.createSource(cr, galleryUri!!)
+                        bitmap = ImageDecoder.decodeBitmap(source)
                     } catch (e: IOException) {
                         Toast.makeText(this@TourokuActivity, getString(R.string.add_picture_failed_message), Toast.LENGTH_SHORT).show()
                     } finally {

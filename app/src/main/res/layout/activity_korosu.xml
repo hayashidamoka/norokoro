@@ -30,6 +30,7 @@
         android:layout_margin="40dp"
         android:background="#FB6CDE"
         android:textColor="@color/white"
+        android:textStyle="bold"
         android:text="もどる"
         />
 
