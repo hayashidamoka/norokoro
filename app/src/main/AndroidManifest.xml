@@ -12,7 +12,10 @@
         android:hardwareAccelerated="false"
         android:largeHeap="true"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+        android:requestLegacyExternalStorage="true"
+        >
+
         <activity android:name="jp.co.pannacotta.norokoro.MainActivity"
             android:screenOrientation="portrait">
 

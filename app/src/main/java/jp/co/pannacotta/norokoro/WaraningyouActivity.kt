@@ -9,7 +9,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.squareup.picasso.Picasso
+import com.bumptech.glide.Glide
 import java.io.File
 
 class WaraningyouActivity : AppCompatActivity() {
@@ -22,7 +22,7 @@ class WaraningyouActivity : AppCompatActivity() {
         val dislike_image_path = prefs.getString("DISLIKE_IMAGE_PATH", getString(R.string.blank))
         if (!TextUtils.isEmpty(dislike_image_path)) {
             //dislike_image_pathファイルをdislikeImageViewにintoする
-            Picasso.get().load(File(dislike_image_path)).into(dislikeImageView)
+            Glide.with(this).load(File(dislike_image_path)).into(dislikeImageView)
         }
         val countTextView = findViewById<TextView>(R.id.countTextView)
         val kugibutton = findViewById<ImageView>(R.id.kugi)
