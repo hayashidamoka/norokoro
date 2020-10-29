@@ -47,8 +47,9 @@ class TourokuActivity : AppCompatActivity(), View.OnClickListener {
         nameEditText = findViewById(R.id.name_edit_text)
 
         startButton = findViewById(R.id.startButton)
-        startButton!!.setOnClickListener(View.OnClickListener {
-            name = nameEditText!!.getText().toString()
+
+        startButton!!.setOnClickListener {
+            name = nameEditText!!.text.toString()
             if (TextUtils.isEmpty(name)) {
                 Toast.makeText(this@TourokuActivity, getString(R.string.error), Toast.LENGTH_SHORT).show()
             } else {
@@ -63,7 +64,7 @@ class TourokuActivity : AppCompatActivity(), View.OnClickListener {
                     finish()
                 }
             }
-        })
+        }
 
         //もしSDカードの書き込みに許可してもらってなかったらパーミッションをリクエストする
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
